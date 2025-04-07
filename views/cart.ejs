@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ShopCompare - Cart</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo"><a href="/dashboard" style="color:white; text-decoration:none;">ShopCompare</a></div>
+    <div class="profile">
+      <i class="fas fa-user-circle"></i>
+      <div class="dropdown">
+        <a href="#">Account Settings</a>
+        <a href="#">Order History</a>
+        <a href="/logout">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="products">
+    <h2 style="margin-left: 1rem;">Your Cart</h2>
+    <% if (cartItems.length === 0) { %>
+      <p style="margin-left: 1rem;">Cart is empty.</p>
+    <% } else { %>
+      <% cartItems.forEach(item => { %>
+        <div class="product-card">
+          <img src="<%= item.image %>" alt="product" />
+          <h3><%= item.productName %></h3>
+          <p><strong>Platform:</strong> <%= item.platform %></p>
+          <p><strong>Price:</strong> ₹<%= item.price %></p>
+          <p><strong>Quantity:</strong> <%= item.quantity %></p>
+        </div>
+      <% }) %>
+
+      <div style="margin-left: 1rem; font-size: 1.2rem;">
+        <p><strong>Total: ₹<%= total %></strong></p>
+        <button>Proceed to Checkout</button>
+      </div>
+    <% } %>
+  </main>
+</body>
+</html>
